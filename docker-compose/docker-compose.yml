@@ -1,0 +1,90 @@
+version: "3"
+services:
+  tracker:
+    image: tracker-bit-torrent
+    ports:
+      - "5000:5000"
+      - "6000:6000"
+    networks:
+      my-network:
+        ipv4_address: 10.0.0.10
+    restart: always
+  client1:
+    image: client-bit-torrent
+    ports:
+      - "30001:30001"
+    networks:
+      my-network:
+        ipv4_address: 10.0.0.11
+    env_file:
+      - ../client/env_file
+
+    depends_on:
+      - tracker
+    restart: always
+
+  client2:
+    image: client-bit-torrent
+    ports:
+      - "30002:30002"
+    networks:
+      my-network:
+        ipv4_address: 10.0.0.12
+    env_file:
+      - ../client/env_file
+
+    depends_on:
+      - tracker
+    restart: always
+
+  client3:
+    image: client-bit-torrent
+    ports:
+      - "30003:30003"
+    networks:
+      my-network:
+        ipv4_address: 10.0.0.13
+    env_file:
+      - ../client/env_file
+
+    depends_on:
+      - tracker
+    restart: always
+  client4:
+    image: client-bit-torrent
+    ports:
+      - "30004:30004"
+    networks:
+      my-network:
+        ipv4_address: 10.0.0.14
+    env_file:
+      - ../client/env_file
+
+    depends_on:
+      - tracker
+    restart: always
+
+  client5:
+    image: client-bit-torrent
+    ports:
+      - "30005:30005"
+    networks:
+      my-network:
+        ipv4_address: 10.0.0.15
+    env_file:
+      - ../client/env_file
+
+    depends_on:
+      - tracker
+    restart: always
+
+
+
+
+networks:
+  my-network: 
+  #  driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/16
+          gateway: 10.0.0.1
