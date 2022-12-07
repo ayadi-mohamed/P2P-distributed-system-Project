@@ -216,7 +216,7 @@ void piecewiseAlgo(vector<string> inpt, vector<string> peers){
     } 
     auto start = std::chrono::system_clock::now();
 
-    cout <<"Start Download: " << timePointToString(start, "%Z %Y-%m-%d %H:%M:%S.") <<endl;
+    cout <<"Finished Downloading at : " << timePointToString(start, "%Z %Y-%m-%d %H:%M:%S.") <<endl;
 
     if(isCorruptedFile){
         cout << "Downloaded completed. The file may be corrupted." << endl;
@@ -246,7 +246,7 @@ int downloadFile(vector<string> inpt, int sock){
     writeLog("sending file details for download : " + fileDetails);
     auto start = std::chrono::system_clock::now();
     
-    cout <<"Start Download: " << timePointToString(start, "%Z %Y-%m-%d %H:%M:%S.") <<endl;
+    cout <<"Started Downloading at : " << timePointToString(start, "%Z %Y-%m-%d %H:%M:%S.") <<endl;
     if(send(sock , &fileDetails[0] , strlen(&fileDetails[0]) , MSG_NOSIGNAL ) == -1){
         printf("Error: %s\n",strerror(errno));
         return -1;
